@@ -1,14 +1,11 @@
-import { Droplets, Cog, Factory, Gauge, Wrench, CircleDot, Thermometer, Car } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Cog, Factory, Thermometer, Car } from "lucide-react";
 
 const categories = [
-  { name: "Automotive Oils", icon: Car, description: "Engine oils for all vehicles" },
-  { name: "Industrial Oils", icon: Factory, description: "Heavy-duty industrial lubricants" },
-  { name: "Greases", icon: Cog, description: "Premium quality greases" },
-  { name: "Gear Oils", icon: Gauge, description: "Transmission & gear protection" },
-  { name: "Hydraulic Oils", icon: Wrench, description: "Hydraulic system fluids" },
-  { name: "Base Oils", icon: Droplets, description: "High-grade base oils" },
-  { name: "Antifreeze", icon: Thermometer, description: "Cooling system fluids" },
-  { name: "Brake Fluids", icon: CircleDot, description: "Brake hydraulic fluids" },
+  { name: "Automotive Oils", icon: Car, description: "Engine oils for all vehicles", link: "/products/automotive-oils" },
+  { name: "Industrial Oils", icon: Factory, description: "Heavy-duty industrial lubricants", link: "/products/industrial-oils" },
+  { name: "Greases", icon: Cog, description: "Premium quality greases", link: "/products/greases" },
+  { name: "Antifreeze & Coolants", icon: Thermometer, description: "Cooling system fluids", link: "/products/antifreeze" },
 ];
 
 const ProductCategories = () => {
@@ -24,12 +21,12 @@ const ProductCategories = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
           {categories.map((category, index) => (
-            <a
+            <Link
               key={category.name}
-              href="#contact"
-              className="group bg-card hover:bg-secondary border border-border rounded-xl p-6 text-center transition-all duration-300 hover:shadow-glow-gold hover:-translate-y-1"
+              to={category.link}
+              className="group bg-card hover:bg-secondary border border-border rounded-xl p-6 text-center transition-all duration-300 hover:shadow-glow-gold hover:-translate-y-1 animate-fade-in"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="w-16 h-16 mx-auto mb-4 bg-secondary group-hover:bg-primary/20 rounded-xl flex items-center justify-center transition-colors duration-300">
@@ -41,7 +38,7 @@ const ProductCategories = () => {
               <p className="text-muted-foreground text-xs md:text-sm mt-2">
                 {category.description}
               </p>
-            </a>
+            </Link>
           ))}
         </div>
       </div>
