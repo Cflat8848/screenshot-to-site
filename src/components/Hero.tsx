@@ -14,13 +14,13 @@ const Hero = () => {
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 pt-20">
         <div className="max-w-4xl">
-          <h1 className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-primary leading-none animate-slide-up">
-            GLOBAL
+          <h1 className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-9xl leading-none animate-slide-up">
+            <span className="text-foreground">RAC</span><span className="text-primary">OIL</span>
           </h1>
           <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-foreground mt-2 md:mt-4 animate-slide-up" style={{ animationDelay: "0.1s" }}>
-            LUBRICANTS INDUSTRIES
+            LUBRICANTS & GREASE
           </h2>
-          <p className="font-display text-xl sm:text-2xl md:text-3xl text-foreground/90 mt-1 animate-slide-up" style={{ animationDelay: "0.2s" }}>
+          <p className="font-display text-xl sm:text-2xl md:text-3xl text-primary/90 mt-1 animate-slide-up" style={{ animationDelay: "0.2s" }}>
             NEPAL
           </p>
           <p className="font-body text-muted-foreground text-base md:text-lg max-w-xl mt-6 animate-fade-in" style={{ animationDelay: "0.4s" }}>

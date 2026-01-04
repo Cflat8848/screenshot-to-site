@@ -3,10 +3,11 @@
 export interface Product {
   id: string;
   name: string;
-  specification: string;
+  description: string; // Changed from "specification" to "description"
   category: string;
   subCategory: string;
   sizes: string[];
+  unit: "Liter" | "KG"; // Unit type for display
 }
 
 export interface SubCategory {
@@ -23,55 +24,66 @@ export interface Category {
   subCategories: SubCategory[];
 }
 
+// Helper function to format sizes with unit
+export const formatSize = (size: string, unit: "Liter" | "KG"): string => {
+  return `${size} ${unit}`;
+};
+
 // Automotive Oils - Passenger and Light Commercial
 const passengerLightCommercial: Product[] = [
   {
     id: "plc-1",
     name: "RACOIL 5W-30 SL/CF",
-    specification: "High-performance multigrade engine oil providing excellent lubrication, engine cleanliness, and wear protection. Suitable for petrol and diesel engines, ensuring smooth performance and improved fuel efficiency.",
+    description: "High-performance multigrade engine oil providing excellent lubrication, engine cleanliness, and wear protection. Suitable for petrol and diesel engines, ensuring smooth performance and improved fuel efficiency.",
     category: "Automotive Oils",
     subCategory: "Passenger and Light Commercial",
-    sizes: ["1 Liter", "5 Liter", "10 Liter"]
+    sizes: ["1", "3", "4"],
+    unit: "Liter"
   },
   {
     id: "plc-2",
     name: "RACOIL 5W-30 SM/CF",
-    specification: "Advanced engine oil formulated for modern engines, offering superior protection against wear, sludge, and oxidation while delivering reliable performance in all driving conditions.",
+    description: "Advanced engine oil formulated for modern engines, offering superior protection against wear, sludge, and oxidation while delivering reliable performance in all driving conditions.",
     category: "Automotive Oils",
     subCategory: "Passenger and Light Commercial",
-    sizes: ["1 Liter", "5 Liter", "10 Liter"]
+    sizes: ["1", "3", "4"],
+    unit: "Liter"
   },
   {
     id: "plc-3",
     name: "RACOIL 20W-50 SL/CF",
-    specification: "Heavy-duty multigrade engine oil designed to protect engines operating under high temperature and load conditions. Helps reduce oil consumption and extend engine life.",
+    description: "Heavy-duty multigrade engine oil designed to protect engines operating under high temperature and load conditions. Helps reduce oil consumption and extend engine life.",
     category: "Automotive Oils",
     subCategory: "Passenger and Light Commercial",
-    sizes: ["1 Liter", "5 Liter", "10 Liter"]
+    sizes: ["1", "3"],
+    unit: "Liter"
   },
   {
     id: "plc-4",
     name: "RACOIL 20W-40 CF/4",
-    specification: "Robust engine oil suitable for diesel engines, providing good engine protection, cleanliness, and stable performance during long operating hours.",
+    description: "Robust engine oil suitable for diesel engines, providing good engine protection, cleanliness, and stable performance during long operating hours.",
     category: "Automotive Oils",
     subCategory: "Passenger and Light Commercial",
-    sizes: ["1 Liter", "5 Liter", "10 Liter"]
+    sizes: ["1", "3"],
+    unit: "Liter"
   },
   {
     id: "plc-5",
     name: "RACOIL 10W-40 SM",
-    specification: "Premium multigrade engine oil offering excellent cold start performance, reduced engine wear, and smooth operation for petrol engines.",
+    description: "Premium multigrade engine oil offering excellent cold start performance, reduced engine wear, and smooth operation for petrol engines.",
     category: "Automotive Oils",
     subCategory: "Passenger and Light Commercial",
-    sizes: ["1 Liter", "5 Liter", "10 Liter"]
+    sizes: ["1", "3", "4"],
+    unit: "Liter"
   },
   {
     id: "plc-6",
     name: "RACOIL 10W-30 SM",
-    specification: "Fuel-efficient engine oil designed to provide effective lubrication, engine cleanliness, and reliable protection for modern petrol engines.",
+    description: "Fuel-efficient engine oil designed to provide effective lubrication, engine cleanliness, and reliable protection for modern petrol engines.",
     category: "Automotive Oils",
     subCategory: "Passenger and Light Commercial",
-    sizes: ["1 Liter", "5 Liter", "10 Liter"]
+    sizes: ["1", "3", "4"],
+    unit: "Liter"
   }
 ];
 
@@ -80,34 +92,38 @@ const heavyDutyMotorOils: Product[] = [
   {
     id: "hdm-1",
     name: "RACOIL PLATINUM 15W-40 CI-4",
-    specification: "High-performance diesel engine oil formulated for heavy-duty engines. Provides excellent wear protection, soot control, and long engine life.",
+    description: "High-performance diesel engine oil formulated for heavy-duty engines. Provides excellent wear protection, soot control, and long engine life.",
     category: "Automotive Oils",
     subCategory: "Heavy Duty Motor Oils",
-    sizes: ["1 Liter", "5 Liter", "10 Liter"]
+    sizes: ["1", "6", "6.5", "7", "8", "10", "15", "210"],
+    unit: "Liter"
   },
   {
     id: "hdm-2",
     name: "RACOIL PLATINUM 15W-40 CI-4 PLUS",
-    specification: "Enhanced heavy-duty engine oil offering superior protection against deposits, oxidation, and wear in high-load diesel engines.",
+    description: "Enhanced heavy-duty engine oil offering superior protection against deposits, oxidation, and wear in high-load diesel engines.",
     category: "Automotive Oils",
     subCategory: "Heavy Duty Motor Oils",
-    sizes: ["1 Liter", "5 Liter", "10 Liter"]
+    sizes: ["1", "6", "6.5", "7", "8", "10", "15", "210"],
+    unit: "Liter"
   },
   {
     id: "hdm-3",
     name: "RACOIL PLATINUM 15W-40 CH-4",
-    specification: "Reliable diesel engine oil designed for commercial vehicles, ensuring engine cleanliness and dependable performance under severe conditions.",
+    description: "Reliable diesel engine oil designed for commercial vehicles, ensuring engine cleanliness and dependable performance under severe conditions.",
     category: "Automotive Oils",
     subCategory: "Heavy Duty Motor Oils",
-    sizes: ["1 Liter", "5 Liter", "10 Liter"]
+    sizes: ["1", "6", "6.5", "7", "8", "10", "15", "210"],
+    unit: "Liter"
   },
   {
     id: "hdm-4",
     name: "RACOIL PLATINUM 15W-40 CF-4",
-    specification: "Quality engine oil suitable for older diesel engines, providing effective lubrication, corrosion protection, and stable engine operation.",
+    description: "Quality engine oil suitable for older diesel engines, providing effective lubrication, corrosion protection, and stable engine operation.",
     category: "Automotive Oils",
     subCategory: "Heavy Duty Motor Oils",
-    sizes: ["1 Liter", "5 Liter", "10 Liter"]
+    sizes: ["1", "6", "6.5", "7", "8", "10", "15", "210"],
+    unit: "Liter"
   }
 ];
 
@@ -116,34 +132,38 @@ const motorcycleOils: Product[] = [
   {
     id: "mc-1",
     name: "RACOIL 4T 20W-50 SL/CF",
-    specification: "Specially formulated 4-stroke motorcycle oil ensuring smooth clutch performance, strong engine protection, and high thermal stability.",
+    description: "Specially formulated 4-stroke motorcycle oil ensuring smooth clutch performance, strong engine protection, and high thermal stability.",
     category: "Automotive Oils",
     subCategory: "Motorcycle Oils",
-    sizes: ["1 Liter", "5 Liter", "10 Liter"]
+    sizes: ["1", "1.2"],
+    unit: "Liter"
   },
   {
     id: "mc-2",
     name: "RACOIL 4T 10W-30 SL/CF",
-    specification: "Motorcycle engine oil providing excellent lubrication, improved fuel economy, and reliable performance in daily riding conditions.",
+    description: "Motorcycle engine oil providing excellent lubrication, improved fuel economy, and reliable performance in daily riding conditions.",
     category: "Automotive Oils",
     subCategory: "Motorcycle Oils",
-    sizes: ["1 Liter", "5 Liter", "10 Liter"]
+    sizes: ["0.8", "1"],
+    unit: "Liter"
   },
   {
     id: "mc-3",
     name: "RACOIL 4T 10W-40 SM/CF",
-    specification: "Premium motorcycle oil offering superior engine cleanliness, reduced wear, and smooth acceleration.",
+    description: "Premium motorcycle oil offering superior engine cleanliness, reduced wear, and smooth acceleration.",
     category: "Automotive Oils",
     subCategory: "Motorcycle Oils",
-    sizes: ["1 Liter", "5 Liter", "10 Liter"]
+    sizes: ["1"],
+    unit: "Liter"
   },
   {
     id: "mc-4",
     name: "RACOIL SUPER 4T 20W-50 CF/SF",
-    specification: "Motorcycle oil designed for high-temperature operation, ensuring long engine life and consistent performance.",
+    description: "Motorcycle oil designed for high-temperature operation, ensuring long engine life and consistent performance.",
     category: "Automotive Oils",
     subCategory: "Motorcycle Oils",
-    sizes: ["1 Liter", "5 Liter", "10 Liter"]
+    sizes: ["1"],
+    unit: "Liter"
   }
 ];
 
@@ -152,18 +172,20 @@ const agricultureOils: Product[] = [
   {
     id: "ag-1",
     name: "RACOIL TRACTOR ENGINE OIL 20W-40 CF",
-    specification: "Specially designed for tractors and agricultural engines, providing reliable lubrication, engine protection, and durability during long working hours.",
+    description: "Specially designed for tractors and agricultural engines, providing reliable lubrication, engine protection, and durability during long working hours.",
     category: "Automotive Oils",
     subCategory: "Agriculture Oils",
-    sizes: ["1 Liter", "5 Liter", "10 Liter"]
+    sizes: ["1", "8", "10"],
+    unit: "Liter"
   },
   {
     id: "ag-2",
     name: "RACOIL UTTO 10W-30",
-    specification: "Universal Tractor Transmission Oil suitable for transmissions, hydraulics, and wet brakes, ensuring smooth operation and equipment protection.",
+    description: "Universal Tractor Transmission Oil suitable for transmissions, hydraulics, and wet brakes, ensuring smooth operation and equipment protection.",
     category: "Automotive Oils",
     subCategory: "Agriculture Oils",
-    sizes: ["1 Liter", "5 Liter", "10 Liter"]
+    sizes: ["1", "10", "20"],
+    unit: "Liter"
   }
 ];
 
@@ -172,58 +194,65 @@ const automotiveGearOils: Product[] = [
   {
     id: "ago-1",
     name: "RACOIL GEAR OIL EP 140 GL-3",
-    specification: "Heavy-duty gear oil providing excellent load-carrying capacity and protection against wear in gear systems.",
+    description: "Heavy-duty gear oil providing excellent load-carrying capacity and protection against wear in gear systems.",
     category: "Automotive Oils",
     subCategory: "Automotive Gear Oils",
-    sizes: ["1 Liter", "5 Liter", "10 Liter"]
+    sizes: ["1", "4", "8", "10", "20"],
+    unit: "Liter"
   },
   {
     id: "ago-2",
     name: "RACOIL GEAR OIL EP 90 GL-3",
-    specification: "Reliable gear oil ensuring smooth operation, reduced noise, and extended gear life.",
+    description: "Reliable gear oil ensuring smooth operation, reduced noise, and extended gear life.",
     category: "Automotive Oils",
     subCategory: "Automotive Gear Oils",
-    sizes: ["1 Liter", "5 Liter", "10 Liter"]
+    sizes: ["1", "4", "8", "10", "20"],
+    unit: "Liter"
   },
   {
     id: "ago-3",
     name: "RACOIL TRANSMISSION/GEAR OIL 85W-140 GL4",
-    specification: "High-viscosity gear oil designed for heavy-load transmissions and differentials.",
+    description: "High-viscosity gear oil designed for heavy-load transmissions and differentials.",
     category: "Automotive Oils",
     subCategory: "Automotive Gear Oils",
-    sizes: ["1 Liter", "5 Liter", "10 Liter"]
+    sizes: ["1", "4", "8", "10", "20"],
+    unit: "Liter"
   },
   {
     id: "ago-4",
     name: "RACOIL TRANSMISSION/GEAR OIL 85W-140 GL5",
-    specification: "Extreme-pressure gear oil offering superior protection under severe operating conditions.",
+    description: "Extreme-pressure gear oil offering superior protection under severe operating conditions.",
     category: "Automotive Oils",
     subCategory: "Automotive Gear Oils",
-    sizes: ["1 Liter", "5 Liter", "10 Liter"]
+    sizes: ["1", "4", "8", "10", "20"],
+    unit: "Liter"
   },
   {
     id: "ago-5",
     name: "RACOIL TRANSMISSION/GEAR OIL 80W-90 GL-4",
-    specification: "Quality transmission oil providing smooth gear shifting and wear protection.",
+    description: "Quality transmission oil providing smooth gear shifting and wear protection.",
     category: "Automotive Oils",
     subCategory: "Automotive Gear Oils",
-    sizes: ["1 Liter", "5 Liter", "10 Liter"]
+    sizes: ["1", "4", "8", "10", "20"],
+    unit: "Liter"
   },
   {
     id: "ago-6",
     name: "RACOIL TRANSMISSION/GEAR OIL 80W-90 GL-5",
-    specification: "High-performance gear oil designed for heavy-duty automotive applications.",
+    description: "High-performance gear oil designed for heavy-duty automotive applications.",
     category: "Automotive Oils",
     subCategory: "Automotive Gear Oils",
-    sizes: ["1 Liter", "5 Liter", "10 Liter"]
+    sizes: ["1", "4", "8", "10", "20"],
+    unit: "Liter"
   },
   {
     id: "ago-7",
     name: "RACOIL ATF II/TQ",
-    specification: "Automatic Transmission Fluid providing smooth gear shifting, oxidation resistance, and transmission protection.",
+    description: "Automatic Transmission Fluid providing smooth gear shifting, oxidation resistance, and transmission protection.",
     category: "Automotive Oils",
     subCategory: "Automotive Gear Oils",
-    sizes: ["1 Liter", "5 Liter", "10 Liter"]
+    sizes: ["1", "10", "20"],
+    unit: "Liter"
   }
 ];
 
@@ -232,26 +261,29 @@ const industrialGearOils: Product[] = [
   {
     id: "igo-1",
     name: "RACOIL GEAR BOX OIL 150",
-    specification: "Industrial gear oils formulated to handle heavy loads, reduce wear, and protect gears from rust and oxidation.",
+    description: "Industrial gear oils formulated to handle heavy loads, reduce wear, and protect gears from rust and oxidation.",
     category: "Industrial Oils",
     subCategory: "Industrial Gear Oils",
-    sizes: ["1 Liter", "5 Liter", "10 Liter"]
+    sizes: ["20", "210"],
+    unit: "Liter"
   },
   {
     id: "igo-2",
     name: "RACOIL GEAR BOX OIL 220",
-    specification: "Industrial gear oils formulated to handle heavy loads, reduce wear, and protect gears from rust and oxidation.",
+    description: "Industrial gear oils formulated to handle heavy loads, reduce wear, and protect gears from rust and oxidation.",
     category: "Industrial Oils",
     subCategory: "Industrial Gear Oils",
-    sizes: ["1 Liter", "5 Liter", "10 Liter"]
+    sizes: ["20", "210"],
+    unit: "Liter"
   },
   {
     id: "igo-3",
     name: "RACOIL GEAR BOX OIL 320",
-    specification: "Industrial gear oils formulated to handle heavy loads, reduce wear, and protect gears from rust and oxidation.",
+    description: "Industrial gear oils formulated to handle heavy loads, reduce wear, and protect gears from rust and oxidation.",
     category: "Industrial Oils",
     subCategory: "Industrial Gear Oils",
-    sizes: ["1 Liter", "5 Liter", "10 Liter"]
+    sizes: ["20", "210"],
+    unit: "Liter"
   }
 ];
 
@@ -260,18 +292,20 @@ const heatTransferOils: Product[] = [
   {
     id: "hto-1",
     name: "RACOIL HEAT TRANSFER OIL 32",
-    specification: "High-quality heat transfer oils offering excellent thermal stability and efficient heat circulation in heating systems.",
+    description: "High-quality heat transfer oils offering excellent thermal stability and efficient heat circulation in heating systems.",
     category: "Industrial Oils",
     subCategory: "Heat Transfer Oils",
-    sizes: ["1 Liter", "5 Liter", "10 Liter"]
+    sizes: ["20", "210"],
+    unit: "Liter"
   },
   {
     id: "hto-2",
     name: "RACOIL HEAT TRANSFER OIL 46",
-    specification: "High-quality heat transfer oils offering excellent thermal stability and efficient heat circulation in heating systems.",
+    description: "High-quality heat transfer oils offering excellent thermal stability and efficient heat circulation in heating systems.",
     category: "Industrial Oils",
     subCategory: "Heat Transfer Oils",
-    sizes: ["1 Liter", "5 Liter", "10 Liter"]
+    sizes: ["10", "20", "210"],
+    unit: "Liter"
   }
 ];
 
@@ -280,34 +314,38 @@ const hydraulicOils: Product[] = [
   {
     id: "ho-1",
     name: "RACOIL HYDRO AW 46",
-    specification: "Anti-wear hydraulic oil providing smooth power transmission and equipment protection.",
+    description: "Anti-wear hydraulic oil providing smooth power transmission and equipment protection.",
     category: "Industrial Oils",
     subCategory: "Hydraulic System Oils",
-    sizes: ["1 Liter", "5 Liter", "10 Liter"]
+    sizes: ["10", "20", "210"],
+    unit: "Liter"
   },
   {
     id: "ho-2",
     name: "RACOIL HYDRO AW 68",
-    specification: "Premium hydraulic oil suitable for high-pressure hydraulic systems.",
+    description: "Premium hydraulic oil suitable for high-pressure hydraulic systems.",
     category: "Industrial Oils",
     subCategory: "Hydraulic System Oils",
-    sizes: ["1 Liter", "5 Liter", "10 Liter"]
+    sizes: ["10", "20", "210"],
+    unit: "Liter"
   },
   {
     id: "ho-3",
     name: "RACOIL HYDRO SUPER 68",
-    specification: "Enhanced hydraulic oil offering improved oxidation resistance and long service life.",
+    description: "Enhanced hydraulic oil offering improved oxidation resistance and long service life.",
     category: "Industrial Oils",
     subCategory: "Hydraulic System Oils",
-    sizes: ["1 Liter", "5 Liter", "10 Liter"]
+    sizes: ["10", "20", "210"],
+    unit: "Liter"
   },
   {
     id: "ho-4",
     name: "RACOIL TRANSMISSION 10W",
-    specification: "Multipurpose oil designed for transmission and hydraulic applications.",
+    description: "Multipurpose oil designed for transmission and hydraulic applications.",
     category: "Industrial Oils",
     subCategory: "Hydraulic System Oils",
-    sizes: ["1 Liter", "5 Liter", "10 Liter"]
+    sizes: ["10", "20", "210"],
+    unit: "Liter"
   }
 ];
 
@@ -315,123 +353,137 @@ const hydraulicOils: Product[] = [
 const compressorOils: Product[] = [
   {
     id: "co-1",
-    name: "REXOIL COMPRESSOR OIL ISO 100",
-    specification: "High-quality compressor oils designed to reduce wear, prevent deposits, and ensure efficient compressor performance.",
+    name: "RACOIL COMPRESSOR OIL ISO 100",
+    description: "High-quality compressor oils designed to reduce wear, prevent deposits, and ensure efficient compressor performance.",
     category: "Industrial Oils",
     subCategory: "Compressor Oils",
-    sizes: ["1 Liter", "5 Liter", "10 Liter"]
+    sizes: ["10", "20", "210"],
+    unit: "Liter"
   },
   {
     id: "co-2",
-    name: "REXOIL COMPRESSOR OIL 32",
-    specification: "High-quality compressor oils designed to reduce wear, prevent deposits, and ensure efficient compressor performance.",
+    name: "RACOIL COMPRESSOR OIL 32",
+    description: "High-quality compressor oils designed to reduce wear, prevent deposits, and ensure efficient compressor performance.",
     category: "Industrial Oils",
     subCategory: "Compressor Oils",
-    sizes: ["1 Liter", "5 Liter", "10 Liter"]
+    sizes: ["10", "20", "210"],
+    unit: "Liter"
   },
   {
     id: "co-3",
-    name: "REXOIL COMPRESSOR OIL 46",
-    specification: "High-quality compressor oils designed to reduce wear, prevent deposits, and ensure efficient compressor performance.",
+    name: "RACOIL COMPRESSOR OIL 46",
+    description: "High-quality compressor oils designed to reduce wear, prevent deposits, and ensure efficient compressor performance.",
     category: "Industrial Oils",
     subCategory: "Compressor Oils",
-    sizes: ["1 Liter", "5 Liter", "10 Liter"]
+    sizes: ["10", "20", "210"],
+    unit: "Liter"
   },
   {
     id: "co-4",
-    name: "REXOIL COMPRESSOR OIL 68",
-    specification: "High-quality compressor oils designed to reduce wear, prevent deposits, and ensure efficient compressor performance.",
+    name: "RACOIL COMPRESSOR OIL 68",
+    description: "High-quality compressor oils designed to reduce wear, prevent deposits, and ensure efficient compressor performance.",
     category: "Industrial Oils",
     subCategory: "Compressor Oils",
-    sizes: ["1 Liter", "5 Liter", "10 Liter"]
+    sizes: ["10", "20", "210"],
+    unit: "Liter"
   }
 ];
 
-// Greases
+// Greases - sizes in KG
 const greases: Product[] = [
   {
     id: "gr-1",
     name: "Rubber Grease",
-    specification: "Water-resistant grease suitable for rubber components and seals.",
+    description: "Water-resistant grease suitable for rubber components and seals.",
     category: "Greases",
     subCategory: "Greases",
-    sizes: ["1 Liter", "5 Liter", "10 Liter"]
+    sizes: ["0.5", "1", "2", "3", "5", "10", "18", "180"],
+    unit: "KG"
   },
   {
     id: "gr-2",
     name: "Red Grease",
-    specification: "General-purpose grease offering good lubrication and protection.",
+    description: "General-purpose grease offering good lubrication and protection.",
     category: "Greases",
     subCategory: "Greases",
-    sizes: ["1 Liter", "5 Liter", "10 Liter"]
+    sizes: ["0.5", "1", "2", "3", "5", "10", "18", "180"],
+    unit: "KG"
   },
   {
     id: "gr-3",
     name: "Bearing EP Grease",
-    specification: "Extreme-pressure grease designed for heavy-load bearings.",
+    description: "Extreme-pressure grease designed for heavy-load bearings.",
     category: "Greases",
     subCategory: "Greases",
-    sizes: ["1 Liter", "5 Liter", "10 Liter"]
+    sizes: ["0.5", "1", "2", "3", "5", "10", "18", "180"],
+    unit: "KG"
   },
   {
     id: "gr-4",
     name: "Bearing Grease Ged Gel",
-    specification: "Smooth-texture grease providing long-lasting bearing protection.",
+    description: "Smooth-texture grease providing long-lasting bearing protection.",
     category: "Greases",
     subCategory: "Greases",
-    sizes: ["1 Liter", "5 Liter", "10 Liter"]
+    sizes: ["0.5", "1", "2", "3", "5", "10", "18", "180"],
+    unit: "KG"
   },
   {
     id: "gr-5",
     name: "HT Blue Grease",
-    specification: "High-temperature grease suitable for demanding applications.",
+    description: "High-temperature grease suitable for demanding applications.",
     category: "Greases",
     subCategory: "Greases",
-    sizes: ["1 Liter", "5 Liter", "10 Liter"]
+    sizes: ["0.5", "1", "2", "3", "5", "10", "18", "180"],
+    unit: "KG"
   },
   {
     id: "gr-6",
     name: "Chessic Grease",
-    specification: "Durable grease designed for chassis lubrication and protection.",
+    description: "Durable grease designed for chassis lubrication and protection.",
     category: "Greases",
     subCategory: "Greases",
-    sizes: ["1 Liter", "5 Liter", "10 Liter"]
+    sizes: ["0.5", "1", "2", "3", "5", "10", "18", "180"],
+    unit: "KG"
   },
   {
     id: "gr-7",
     name: "Calcium White Grease",
-    specification: "Water-resistant grease suitable for automotive and industrial use.",
+    description: "Water-resistant grease suitable for automotive and industrial use.",
     category: "Greases",
     subCategory: "Greases",
-    sizes: ["1 Liter", "5 Liter", "10 Liter"]
+    sizes: ["0.5", "1", "2", "3", "5", "10", "18", "180"],
+    unit: "KG"
   }
 ];
 
-// Antifreeze/Coolants
-const antifreeze: Product[] = [
+// Antifreeze/Coolants - renamed to "Others" as per Excel
+const coolants: Product[] = [
   {
     id: "af-1",
     name: "Coolants Ready Green",
-    specification: "Ready-to-use engine coolants providing excellent protection against overheating, corrosion, and rust.",
-    category: "Antifreeze",
+    description: "Ready-to-use engine coolants providing excellent protection against overheating, corrosion, and rust.",
+    category: "Others",
     subCategory: "Coolants",
-    sizes: ["1 Liter", "5 Liter", "10 Liter"]
+    sizes: ["1"],
+    unit: "Liter"
   },
   {
     id: "af-2",
     name: "Coolants Ready Red",
-    specification: "Ready-to-use engine coolants providing excellent protection against overheating, corrosion, and rust.",
-    category: "Antifreeze",
+    description: "Ready-to-use engine coolants providing excellent protection against overheating, corrosion, and rust.",
+    category: "Others",
     subCategory: "Coolants",
-    sizes: ["1 Liter", "5 Liter", "10 Liter"]
+    sizes: ["1"],
+    unit: "Liter"
   },
   {
     id: "af-3",
     name: "Coolants Green 1:4",
-    specification: "High-quality coolant concentrate ensuring effective engine cooling and long radiator life.",
-    category: "Antifreeze",
+    description: "High-quality coolant concentrate ensuring effective engine cooling and long radiator life.",
+    category: "Others",
     subCategory: "Coolants",
-    sizes: ["1 Liter", "5 Liter", "10 Liter"]
+    sizes: ["1"],
+    unit: "Liter"
   }
 ];
 
@@ -511,23 +563,23 @@ export const productCategories: Category[] = [
     slug: "greases",
     subCategories: [
       {
-        id: "greases-all",
-        name: "All Greases",
-        slug: "all",
+        id: "greases",
+        name: "Greases",
+        slug: "greases",
         products: greases
       }
     ]
   },
   {
-    id: "antifreeze",
-    name: "Antifreeze & Coolants",
-    slug: "antifreeze",
+    id: "others",
+    name: "Others",
+    slug: "others",
     subCategories: [
       {
         id: "coolants",
         name: "Coolants",
         slug: "coolants",
-        products: antifreeze
+        products: coolants
       }
     ]
   }
@@ -535,20 +587,20 @@ export const productCategories: Category[] = [
 
 // Helper functions
 export const getAllProducts = (): Product[] => {
-  return productCategories.flatMap(cat => 
-    cat.subCategories.flatMap(sub => sub.products)
+  return productCategories.flatMap(category =>
+    category.subCategories.flatMap(subCategory => subCategory.products)
   );
 };
 
 export const getProductById = (id: string): Product | undefined => {
-  return getAllProducts().find(p => p.id === id);
+  return getAllProducts().find(product => product.id === id);
 };
 
 export const getCategoryBySlug = (slug: string): Category | undefined => {
-  return productCategories.find(c => c.slug === slug);
+  return productCategories.find(category => category.slug === slug);
 };
 
 export const getSubCategoryBySlug = (categorySlug: string, subCategorySlug: string): SubCategory | undefined => {
   const category = getCategoryBySlug(categorySlug);
-  return category?.subCategories.find(s => s.slug === subCategorySlug);
+  return category?.subCategories.find(sub => sub.slug === subCategorySlug);
 };
