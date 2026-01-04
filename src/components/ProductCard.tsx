@@ -32,7 +32,7 @@ const ProductCard = ({ product, onSelect }: ProductCardProps) => {
           {product.name}
         </h3>
         <p className="text-muted-foreground text-sm line-clamp-2">
-          {product.specification}
+          {product.description}
         </p>
       </div>
     </div>

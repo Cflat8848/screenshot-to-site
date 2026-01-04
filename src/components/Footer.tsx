@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <img src={logo} alt="RACOIL Lubricants & Grease" className="h-10 w-auto" />
+            <img src={logo} alt="RACOIL Lubricants & Grease" className="h-12 w-auto drop-shadow-md" />
           </div>
           
           <p className="text-muted-foreground text-sm text-center">

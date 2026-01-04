@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Product } from "@/data/products";
+import { Product, formatSize } from "@/data/products";
 import { X, Droplets, ChevronRight } from "lucide-react";
 import { Button } from "./ui/button";
 
@@ -10,6 +10,7 @@ interface ProductDetailProps {
 
 const ProductDetail = ({ product, onClose }: ProductDetailProps) => {
   const [selectedSize, setSelectedSize] = useState(product.sizes[0]);
+  const hasMultipleSizes = product.sizes.length > 1;
 
   return (
     <div 
@@ -34,8 +35,9 @@ const ProductDetail = ({ product, onClose }: ProductDetailProps) => {
 
         <div className="grid md:grid-cols-2 gap-6 p-6 md:p-8">
           {/* Product Image */}
-          <div className="relative aspect-square bg-gradient-to-br from-secondary to-background rounded-xl flex items-center justify-center">
-            <Droplets className="w-32 h-32 text-primary/40" />
+          <div className="relative aspect-square bg-gradient-to-br from-secondary/50 to-background rounded-xl flex items-center justify-center overflow-hidden">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,hsl(var(--primary)/0.1),transparent_70%)]" />
+            <Droplets className="w-32 h-32 text-primary/40 animate-pulse" />
             {/* Future: Replace with actual product image */}
             {/* <img src={product.image} alt={product.name} className="object-contain" /> */}
           </div>
@@ -54,32 +56,41 @@ const ProductDetail = ({ product, onClose }: ProductDetailProps) => {
               {product.name}
             </h2>
 
-            {/* Specification */}
+            {/* Description - Changed from Specification */}
             <div className="mb-6">
-              <h3 className="text-lg font-semibold text-foreground mb-2">Specification</h3>
+              <h3 className="text-lg font-semibold text-foreground mb-2">Description</h3>
               <p className="text-muted-foreground leading-relaxed">
-                {product.specification}
+                {product.description}
               </p>
             </div>
 
             {/* Size Selector */}
             <div className="mb-6">
-              <h3 className="text-lg font-semibold text-foreground mb-3">Available Sizes</h3>
-              <div className="flex flex-wrap gap-3">
-                {product.sizes.map((size) => (
-                  <button
-                    key={size}
-                    onClick={() => setSelectedSize(size)}
-                    className={`px-6 py-3 rounded-lg border-2 font-medium transition-all duration-200 ${
-                      selectedSize === size
-                        ? "border-primary bg-primary/20 text-primary"
-                        : "border-border bg-secondary hover:border-primary/50 text-foreground"
-                    }`}
-                  >
-                    {size}
-                  </button>
-                ))}
-              </div>
+              <h3 className="text-lg font-semibold text-foreground mb-3">
+                Available {hasMultipleSizes ? "Sizes" : "Size"}
+              </h3>
+              
+              {hasMultipleSizes ? (
+                <div className="flex flex-wrap gap-2 sm:gap-3">
+                  {product.sizes.map((size) => (
+                    <button
+                      key={size}
+                      onClick={() => setSelectedSize(size)}
+                      className={`px-4 py-2.5 sm:px-6 sm:py-3 rounded-lg border-2 font-medium transition-all duration-200 text-sm sm:text-base ${
+                        selectedSize === size
+                          ? "border-primary bg-primary/20 text-primary shadow-glow-gold"
+                          : "border-border bg-secondary hover:border-primary/50 text-foreground hover:bg-secondary/80"
+                      }`}
+                    >
+                      {formatSize(size, product.unit)}
+                    </button>
+                  ))}
+                </div>
+              ) : (
+                <div className="inline-block px-6 py-3 rounded-lg border-2 border-primary bg-primary/20 text-primary font-medium">
+                  {formatSize(product.sizes[0], product.unit)}
+                </div>
+              )}
             </div>
 
             {/* Contact Button */}
