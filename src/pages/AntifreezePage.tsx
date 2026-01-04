@@ -8,7 +8,7 @@ import ProductGrid from "@/components/ProductGrid";
 import { ArrowLeft, ChevronRight } from "lucide-react";
 
 const AntifreezePage = () => {
-  const category = getCategoryBySlug("antifreeze");
+  const category = getCategoryBySlug("others");
 
   if (!category) {
     return <div>Category not found</div>;
