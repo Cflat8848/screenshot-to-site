@@ -469,7 +469,9 @@ const coolants: Product[] = [
     category: "Others",
     subCategory: "Coolants",
     sizes: ["1"],
-    unit: "Liter"
+    unit: "Liter",
+    image: "/products/coolant-ready-green.png",
+    imageDetail: "/products/coolant-ready-green.png"
   },
   {
     id: "af-2",
@@ -478,7 +480,9 @@ const coolants: Product[] = [
     category: "Others",
     subCategory: "Coolants",
     sizes: ["1"],
-    unit: "Liter"
+    unit: "Liter",
+    image: "/products/coolant-ready-red.png",
+    imageDetail: "/products/coolant-ready-red.png"
   },
   {
     id: "af-3",
@@ -487,7 +491,9 @@ const coolants: Product[] = [
     category: "Others",
     subCategory: "Coolants",
     sizes: ["1"],
-    unit: "Liter"
+    unit: "Liter",
+    image: "/products/coolant-green-1-4.png",
+    imageDetail: "/products/coolant-green-1-4.png"
   }
 ];
 
