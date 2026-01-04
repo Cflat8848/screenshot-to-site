@@ -10,7 +10,11 @@ interface ProductDetailProps {
 
 const ProductDetail = ({ product, onClose }: ProductDetailProps) => {
   const [selectedSize, setSelectedSize] = useState(product.sizes[0]);
+  const [imageLoaded, setImageLoaded] = useState(false);
   const hasMultipleSizes = product.sizes.length > 1;
+  
+  // Use detail image if available, fallback to card image
+  const displayImage = product.imageDetail || product.image;
 
   return (
     <div 
@@ -37,9 +41,24 @@ const ProductDetail = ({ product, onClose }: ProductDetailProps) => {
           {/* Product Image */}
           <div className="relative aspect-square bg-gradient-to-br from-secondary/50 to-background rounded-xl flex items-center justify-center overflow-hidden">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,hsl(var(--primary)/0.1),transparent_70%)]" />
-            <Droplets className="w-32 h-32 text-primary/40 animate-pulse" />
-            {/* Future: Replace with actual product image */}
-            {/* <img src={product.image} alt={product.name} className="object-contain" /> */}
+            
+            {displayImage ? (
+              <>
+                <img
+                  src={displayImage}
+                  alt={product.name}
+                  onLoad={() => setImageLoaded(true)}
+                  className={`w-full h-full object-contain p-6 drop-shadow-xl transition-all duration-500 ${
+                    imageLoaded ? "opacity-100 scale-100" : "opacity-0 scale-95"
+                  }`}
+                />
+                {!imageLoaded && (
+                  <Droplets className="absolute w-32 h-32 text-primary/40 animate-pulse" />
+                )}
+              </>
+            ) : (
+              <Droplets className="w-32 h-32 text-primary/40 animate-pulse" />
+            )}
           </div>
 
           {/* Product Info */}

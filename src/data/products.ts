@@ -8,6 +8,8 @@ export interface Product {
   subCategory: string;
   sizes: string[];
   unit: "Liter" | "KG"; // Unit type for display
+  image?: string; // Card image (500x500)
+  imageDetail?: string; // Detail image (800x800)
 }
 
 export interface SubCategory {
@@ -154,7 +156,9 @@ const motorcycleOils: Product[] = [
     category: "Automotive Oils",
     subCategory: "Motorcycle Oils",
     sizes: ["1"],
-    unit: "Liter"
+    unit: "Liter",
+    image: "/products/racoil-4t-10w40-smcf-card.png",
+    imageDetail: "/products/racoil-4t-10w40-smcf-detail.png"
   },
   {
     id: "mc-4",
