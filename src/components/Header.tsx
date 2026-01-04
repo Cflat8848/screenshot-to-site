@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Menu, X, Phone } from "lucide-react";
-import logo from "@/assets/logo.png";
+import logoDesktop from "@/assets/logo-desktop.png";
+import logoMobile from "@/assets/logo-mobile.png";
 
 const navLinks = [
   { name: "Home", href: "#home" },
@@ -18,8 +19,19 @@ const Header = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <a href="#home" className="flex items-center gap-2">
-            <img src={logo} alt="RACOIL Lubricants & Grease" className="h-12 md:h-14 w-auto drop-shadow-md" />
+          <a href="#home" className="flex items-center">
+            {/* Desktop Logo - 160x56px */}
+            <img 
+              src={logoDesktop} 
+              alt="RACOIL Lubricants & Grease" 
+              className="hidden md:block h-14 w-auto drop-shadow-lg" 
+            />
+            {/* Mobile Logo - 120x48px */}
+            <img 
+              src={logoMobile} 
+              alt="RACOIL Lubricants & Grease" 
+              className="md:hidden h-12 w-auto drop-shadow-lg" 
+            />
           </a>
 
           {/* Desktop Navigation */}
