@@ -450,8 +450,16 @@ const greases: Product[] = [
     description: "High-temperature grease suitable for demanding applications.",
     category: "Greases",
     subCategory: "Greases",
-    sizes: ["0.5", "1", "2", "3", "5", "10", "18", "180"],
-    unit: "KG"
+    sizes: ["0.5", "1", "10", "18"],
+    unit: "KG",
+    image: "/products/ht-blue-grease-0.5kg.png",
+    imageDetail: "/products/ht-blue-grease-0.5kg.png",
+    sizeImages: {
+      "0.5": "/products/ht-blue-grease-0.5kg.png",
+      "1": "/products/ht-blue-grease-1kg.png",
+      "10": "/products/ht-blue-grease-10kg.png",
+      "18": "/products/ht-blue-grease-18kg.png"
+    }
   },
   {
     id: "gr-6",
@@ -459,8 +467,16 @@ const greases: Product[] = [
     description: "Durable grease designed for chassis lubrication and protection.",
     category: "Greases",
     subCategory: "Greases",
-    sizes: ["0.5", "1", "2", "3", "5", "10", "18", "180"],
-    unit: "KG"
+    sizes: ["0.5", "1", "10", "18"],
+    unit: "KG",
+    image: "/products/chassic-grease-0.5kg.png",
+    imageDetail: "/products/chassic-grease-0.5kg.png",
+    sizeImages: {
+      "0.5": "/products/chassic-grease-0.5kg.png",
+      "1": "/products/chassic-grease-1kg.png",
+      "10": "/products/chassic-grease-10kg.png",
+      "18": "/products/chassic-grease-18kg.png"
+    }
   },
   {
     id: "gr-7",
@@ -468,8 +484,14 @@ const greases: Product[] = [
     description: "Water-resistant grease suitable for automotive and industrial use.",
     category: "Greases",
     subCategory: "Greases",
-    sizes: ["0.5", "1", "2", "3", "5", "10", "18", "180"],
-    unit: "KG"
+    sizes: ["0.5", "1", "10", "18"],
+    unit: "KG",
+    image: "/products/calcium-white-grease-0.5kg.png",
+    imageDetail: "/products/calcium-white-grease-0.5kg.png",
+    sizeImages: {
+      "0.5": "/products/calcium-white-grease-0.5kg.png",
+      "1": "/products/calcium-white-grease-1kg.png"
+    }
   }
 ];
 
