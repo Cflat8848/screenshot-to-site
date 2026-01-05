@@ -490,7 +490,9 @@ const greases: Product[] = [
     imageDetail: "/products/calcium-white-grease-0.5kg.png",
     sizeImages: {
       "0.5": "/products/calcium-white-grease-0.5kg.png",
-      "1": "/products/calcium-white-grease-1kg.png"
+      "1": "/products/calcium-white-grease-1kg.png",
+      "10": "/products/calcium-white-grease-10kg.png",
+      "18": "/products/calcium-white-grease-18kg.png"
     }
   }
 ];
