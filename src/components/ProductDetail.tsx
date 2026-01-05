@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Product, formatSize } from "@/data/products";
 import { X, Droplets, ChevronRight } from "lucide-react";
 import { Button } from "./ui/button";
@@ -11,10 +11,37 @@ interface ProductDetailProps {
 const ProductDetail = ({ product, onClose }: ProductDetailProps) => {
   const [selectedSize, setSelectedSize] = useState(product.sizes[0]);
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageAnimating, setImageAnimating] = useState(false);
   const hasMultipleSizes = product.sizes.length > 1;
   
-  // Use detail image if available, fallback to card image
-  const displayImage = product.imageDetail || product.image;
+  // Get image for current selected size
+  const getImageForSize = (size: string) => {
+    if (product.sizeImages && product.sizeImages[size]) {
+      return product.sizeImages[size];
+    }
+    return product.imageDetail || product.image;
+  };
+  
+  const displayImage = getImageForSize(selectedSize);
+
+  // Handle size change with animation
+  const handleSizeChange = (size: string) => {
+    if (size === selectedSize) return;
+    
+    setImageAnimating(true);
+    setImageLoaded(false);
+    
+    setTimeout(() => {
+      setSelectedSize(size);
+      setImageAnimating(false);
+    }, 150);
+  };
+
+  // Reset image loaded state when product changes
+  useEffect(() => {
+    setImageLoaded(false);
+    setSelectedSize(product.sizes[0]);
+  }, [product]);
 
   return (
     <div 
@@ -46,18 +73,27 @@ const ProductDetail = ({ product, onClose }: ProductDetailProps) => {
               <>
                 <img
                   src={displayImage}
-                  alt={product.name}
+                  alt={`${product.name} - ${formatSize(selectedSize, product.unit)}`}
                   onLoad={() => setImageLoaded(true)}
-                  className={`w-full h-full object-contain p-6 drop-shadow-xl transition-all duration-500 ${
-                    imageLoaded ? "opacity-100 scale-100" : "opacity-0 scale-95"
+                  className={`w-full h-full object-contain p-6 drop-shadow-xl transition-all duration-300 ${
+                    imageLoaded && !imageAnimating 
+                      ? "opacity-100 scale-100" 
+                      : "opacity-0 scale-95"
                   }`}
                 />
-                {!imageLoaded && (
+                {(!imageLoaded || imageAnimating) && (
                   <Droplets className="absolute w-32 h-32 text-primary/40 animate-pulse" />
                 )}
               </>
             ) : (
               <Droplets className="w-32 h-32 text-primary/40 animate-pulse" />
+            )}
+            
+            {/* Size indicator badge */}
+            {hasMultipleSizes && (
+              <div className="absolute bottom-4 left-4 px-3 py-1.5 bg-primary/90 text-primary-foreground rounded-full text-sm font-medium">
+                {formatSize(selectedSize, product.unit)}
+              </div>
             )}
           </div>
 
@@ -75,7 +111,7 @@ const ProductDetail = ({ product, onClose }: ProductDetailProps) => {
               {product.name}
             </h2>
 
-            {/* Description - Changed from Specification */}
+            {/* Description */}
             <div className="mb-6">
               <h3 className="text-lg font-semibold text-foreground mb-2">Description</h3>
               <p className="text-muted-foreground leading-relaxed">
@@ -94,10 +130,10 @@ const ProductDetail = ({ product, onClose }: ProductDetailProps) => {
                   {product.sizes.map((size) => (
                     <button
                       key={size}
-                      onClick={() => setSelectedSize(size)}
+                      onClick={() => handleSizeChange(size)}
                       className={`px-4 py-2.5 sm:px-6 sm:py-3 rounded-lg border-2 font-medium transition-all duration-200 text-sm sm:text-base ${
                         selectedSize === size
-                          ? "border-primary bg-primary/20 text-primary shadow-glow-gold"
+                          ? "border-primary bg-primary/20 text-primary shadow-glow-gold scale-105"
                           : "border-border bg-secondary hover:border-primary/50 text-foreground hover:bg-secondary/80"
                       }`}
                     >

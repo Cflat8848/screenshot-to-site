@@ -19,13 +19,12 @@ const ProductGrid = ({ products, title }: ProductGridProps) => {
       
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
         {products.map((product, index) => (
-          <div
+          <ProductCard 
             key={product.id}
-            className="animate-fade-in"
-            style={{ animationDelay: `${index * 0.05}s` }}
-          >
-            <ProductCard product={product} onSelect={setSelectedProduct} />
-          </div>
+            product={product} 
+            onSelect={setSelectedProduct}
+            animationDelay={index * 100}
+          />
         ))}
       </div>
 
