@@ -10,6 +10,7 @@ export interface Product {
   unit: "Liter" | "KG"; // Unit type for display
   image?: string; // Card image (500x500)
   imageDetail?: string; // Detail image (800x800)
+  sizeImages?: Record<string, string>; // Size-specific images
 }
 
 export interface SubCategory {
@@ -133,21 +134,33 @@ const heavyDutyMotorOils: Product[] = [
 const motorcycleOils: Product[] = [
   {
     id: "mc-1",
-    name: "RACOIL 4T 20W-50 SL/CF",
-    description: "Specially formulated 4-stroke motorcycle oil ensuring smooth clutch performance, strong engine protection, and high thermal stability.",
-    category: "Automotive Oils",
-    subCategory: "Motorcycle Oils",
-    sizes: ["1", "1.2"],
-    unit: "Liter"
-  },
-  {
-    id: "mc-2",
     name: "RACOIL 4T 10W-30 SL/CF",
     description: "Motorcycle engine oil providing excellent lubrication, improved fuel economy, and reliable performance in daily riding conditions.",
     category: "Automotive Oils",
     subCategory: "Motorcycle Oils",
     sizes: ["0.8", "1"],
-    unit: "Liter"
+    unit: "Liter",
+    image: "/products/racoil-4t-10w30-0.8l.png",
+    imageDetail: "/products/racoil-4t-10w30-0.8l.png",
+    sizeImages: {
+      "0.8": "/products/racoil-4t-10w30-0.8l.png",
+      "1": "/products/racoil-4t-10w30-1l.png"
+    }
+  },
+  {
+    id: "mc-2",
+    name: "RACOIL 4T 20W-50 SL/CF",
+    description: "Specially formulated 4-stroke motorcycle oil ensuring smooth clutch performance, strong engine protection, and high thermal stability.",
+    category: "Automotive Oils",
+    subCategory: "Motorcycle Oils",
+    sizes: ["1", "1.2"],
+    unit: "Liter",
+    image: "/products/racoil-4t-20w50-1l.png",
+    imageDetail: "/products/racoil-4t-20w50-1l.png",
+    sizeImages: {
+      "1": "/products/racoil-4t-20w50-1l.png",
+      "1.2": "/products/racoil-4t-20w50-1.2l.png"
+    }
   },
   {
     id: "mc-3",
