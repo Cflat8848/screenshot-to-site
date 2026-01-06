@@ -170,8 +170,11 @@ const motorcycleOils: Product[] = [
     subCategory: "Motorcycle Oils",
     sizes: ["1"],
     unit: "Liter",
-    image: "/products/racoil-4t-10w40-smcf-card.png",
-    imageDetail: "/products/racoil-4t-10w40-smcf-detail.png"
+    image: "/products/racoil-4t-10w40-smcf-1l.png",
+    imageDetail: "/products/racoil-4t-10w40-smcf-1l.png",
+    sizeImages: {
+      "1": "/products/racoil-4t-10w40-smcf-1l.png"
+    }
   },
   {
     id: "mc-4",
