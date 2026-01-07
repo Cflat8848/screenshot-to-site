@@ -89,10 +89,10 @@ const ProductDetail = ({ product, onClose }: ProductDetailProps) => {
               <Droplets className="w-32 h-32 text-primary/40 animate-pulse" />
             )}
             
-            {/* Size indicator badge */}
-            {hasMultipleSizes && (
+            {/* Price badge */}
+            {product.prices && product.prices[selectedSize] && (
               <div className="absolute bottom-4 left-4 px-3 py-1.5 bg-primary/90 text-primary-foreground rounded-full text-sm font-medium">
-                {formatSize(selectedSize, product.unit)}
+                Nrs. {product.prices[selectedSize].toLocaleString()}
               </div>
             )}
           </div>
