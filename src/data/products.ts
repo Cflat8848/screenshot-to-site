@@ -11,6 +11,7 @@ export interface Product {
   image?: string; // Card image (500x500)
   imageDetail?: string; // Detail image (800x800)
   sizeImages?: Record<string, string>; // Size-specific images
+  prices?: Record<string, number>; // Price per size in NPR
 }
 
 export interface SubCategory {
@@ -40,8 +41,20 @@ const passengerLightCommercial: Product[] = [
     description: "High-performance multigrade engine oil providing excellent lubrication, engine cleanliness, and wear protection. Suitable for petrol and diesel engines, ensuring smooth performance and improved fuel efficiency.",
     category: "Automotive Oils",
     subCategory: "Passenger and Light Commercial",
-    sizes: ["1", "3", "4"],
-    unit: "Liter"
+    sizes: ["1", "3", "3.5"],
+    unit: "Liter",
+    image: "/products/racoil-5w30-slcf-1l.png",
+    imageDetail: "/products/racoil-5w30-slcf-1l.png",
+    sizeImages: {
+      "1": "/products/racoil-5w30-slcf-1l.png",
+      "3": "/products/racoil-5w30-slcf-3l.png",
+      "3.5": "/products/racoil-5w30-slcf-3.5l.png"
+    },
+    prices: {
+      "1": 907,
+      "3": 2685,
+      "3.5": 3132
+    }
   },
   {
     id: "plc-2",
